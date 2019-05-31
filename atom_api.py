@@ -109,6 +109,7 @@ def append_portfolio_sales_history(df):
             time.sleep(.25)
             row_counter += 1
         except:
+            conn = http.client.HTTPSConnection("search.onboard-apis.com")
             relevant_sale_dates.append('error')
             relevant_sale_amounts.append('error')
             all_sales.append('error')
