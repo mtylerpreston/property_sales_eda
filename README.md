@@ -2,6 +2,9 @@
 
 Betterview is an Insurtech company that created a platform for generating and analyzing roofs of properties at cost/scale that was impossible until recently. Imagery of cities is captured on a regular basis by manned aircraft and stiched into a large orthomap with 7 cm resolution (compared to the typical 30 cm resolution and often many years old imagery of Google Maps). Check out the provider of this imagery, Nearmap, to learn more about this. Betterview's platform combines image classification with human labeling to derive data on the condition of roofs based on addresses provided by their clients (primarily insurance companies.
 
+Slide Presentation here:
+https://docs.google.com/presentation/d/12L8MlkYNZDunWKPdJlqd5FWhqYBCPva1f7jblk1BMHk/edit#slide=id.p
+
 ### Example of Imagery from Nearmap
 ![](/images/nearmap_example.png)
 
@@ -18,7 +21,7 @@ Naturally, it would stand to reason that many of the same factors that contribut
 
 # The Study
 
-Given Betterview's roof data and visual scores for approximately 85,000 locations from over the last year, records of sales after the time such data was generated, and property value estimates from the same time that the data was generated, one could determine the viability of using this roof data in estimating selling price. 
+Given Betterview's roof data and visual scores for approximately 72,000 locations from over the last year, records of sales after the time such data was generated, and property value estimates from the same time that the data was generated, one could determine the viability of using this roof data in estimating selling price. 
 
 Given that our access to sales data is much better than our access to historical property value estimates (API vs scraping real estate sites), it is prudent to first narrow down our list of candidate properties for the study to those that have sold after Betterview's data was generated. This is expected to yield about a 1% return rate (or perhaps lower) for which our actual study can be conducted.
 
@@ -42,7 +45,7 @@ It is also worth noting that numerous Captchas were completed even while going t
 ### Yet Hope Remains
 Let us consider the old addage that when running from a bear, you don't have to run faster than the bear, you just have to run faster than the person next to you. While normally we consider this from the faster person's point of view, let us walk a mile in the shoes of the bear...
 
-Well, just when this bear was getting pretty worn out chasing Zillow (although without enough time/resources still wants to catch it), it caught a glimpse of Realtor.com slowly plodding along. 
+Well, just when this bear was getting pretty worn out chasing Zillow (although with enough time/resources still hopes to catch it), it caught a glimpse of Realtor.com slowly plodding along. 
 
 Yada yada yada...through exploratory phase, it was learned that Selenium could be a valuable tool that would still yield value in scalable scraping of Realtor.com. Although this data has yet to be gathered for the whole of our initial sample, the concepts have been substantiated (Realtor has been caught on numerous practice hunts).
 
@@ -51,10 +54,11 @@ Yada yada yada...through exploratory phase, it was learned that Selenium could b
 
 # The Data:
 
-* Source Betterview: Categorical roof features (such as existing damage, patching, ponding, etc) and visual score for about 85,000 properties
-* Source Attom API: Sales History for all properties - This data is still being obtained (will add some visuals/analysis if I can finish this document in time). With the limits of Attom's 30-day free trial including a 4000 hit/day limit, it will take about 20 days to cover all of these properties which is viable. 
+* Source Betterview: Categorical roof features (such as existing damage, patching, ponding, etc) and visual score for about 72,000 properties
+* Source Attom API: Sales History for all properties - This data is still being obtained (will add some visuals/analysis if I can finish this document in time). With the limits of Attom's 30-day free trial including a 4,000 hit/day limit, it will take about 20 days to cover all of these properties which is viable. 
 * Source Realtor.com: Historical value estimates scraped from web. Estimating this will be performed on approximately 400 to 800 properties. Since we need historical estimates and not today's estimate, we mustAt about 20 seconds per page this would take about 5 hours (if all goes well). 
 
+### Gratuitous visualizations
 The Visual Scores for this sample appear to be exponentially distributed:
 
 ![](/images/visual_score_hist.png)
