@@ -28,11 +28,15 @@ bv_data.dropna(axis=0, how='any', inplace=True)
 bv_data.reset_index(inplace=True, drop=True)
 
 # Take a small sample for testing, toggle this with to comment for production
-bv_data = bv_data.iloc[:100, :]
+bv_data = bv_data.iloc[:20000, :]
 
 # Append relevant sales history from API Calls to Atom
-bv_data = atom_api.append_portfolio_sales_history(bv_data)
+bv_data, sales_results = atom_api.append_portfolio_sales_history(bv_data)
 
 # Write results to a .csv file for safe keeping
-bv_data.to_csv(r'/Users/tylerpreston/galvanize/capstone/\
-    property_sales_eda/export_df.csv', index=False)
+try:
+    bv_data.to_csv(r'/Users/tylerpreston/galvanize/capstone/property_sales_eda/export_df.csv', index=False)
+except:
+    sales_results.to_csv(r'/Users/tylerpreston/galvanize/capstone/property_sales_eda/sales_export_df.csv', index=False)
+
+sales_results.to_csv(r'/Users/tylerpreston/galvanize/capstone/property_sales_eda/sales_export_df.csv', index=False)
