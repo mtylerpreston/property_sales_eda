@@ -28,9 +28,33 @@ The above pipeline was decided upon after much trial and error with Zillow API a
 
 With the limits of Attom's 30 free trial including a 4000 hit/day limit, it will take about 20 days to cover all of these properties. 
 
-Selenium in Action:
+### Selenium In Action
 ![](/images/selenium_demo.gif)
 
+# The Data:
+* Betterview: Categorical roof features (such as existing damage, patching, ponding, etc) and visual score
 
+The Visual Scores for the ~85,000 properties appears to be exponentially distributed:
 
 ![](/images/visual_score_hist.png)
+
+And again but with a log scale on the Y Axis:
+
+![](/images/visual_score_hist_log.png)
+
+# Hypothesis
+As alluded to previously, the theory is that when a property has a lower Visual Score due to problems with its roof, this will correlate to selling prices that are lower than expected. 
+
+Stated mathematically:
+
+Where 	E = realtor estimate
+		V = visual score
+		S = sales price
+        82 = mean of visual scores for this sample
+        
+             (S - E)/STD(S's)   -   (V - MEAN(V's))/STDEV(V's)      =    0 
+
+Testing of this hypothesis would be performed using Welch's t Test for comparing two samples.
+
+
+
